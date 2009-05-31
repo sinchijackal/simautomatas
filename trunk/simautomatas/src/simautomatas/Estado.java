@@ -5,6 +5,8 @@
 
 package simautomatas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Joaquin
@@ -12,19 +14,15 @@ package simautomatas;
 public class Estado {
 
     private String nombre;
-    private Transicion[] f;
+    private ArrayList<Transicion> f;
 
     public Estado(String nombre, Transicion[] f) {
         this.nombre = nombre;
-        this.f = f;
+        this.f = new ArrayList<Transicion>();
     }
 
     public Estado(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Transicion[] getF() {
-        return f;
     }
 
     /**
@@ -32,15 +30,15 @@ public class Estado {
      * @param f Transicion
      */
     public void setF(Transicion f) {
-        this.f[this.f.length] = f;
+        this.f.add(f);
     }
 
     public Estado valuar(char entrada) throws NoExisteEntrada {
         // comprobamos todas las transiciones
-        for (int i=0; i<f.length; i++) {
+        for (int i=0; i<f.size(); i++) {
             // si la entrada ingresada corresponde a entrada, retornamos el estado siguiente
-            if (f[i].getEntrada() == entrada) {
-                return f[i].getEstadoSiguiente();
+            if (f.get(i).getEntrada() == entrada) {
+                return f.get(i).getEstadoSiguiente();
             }
         }
 
