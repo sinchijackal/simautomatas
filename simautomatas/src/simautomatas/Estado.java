@@ -35,6 +35,19 @@ public class Estado {
         this.f[this.f.length] = f;
     }
 
+    public Estado valuar(char entrada) throws NoExisteEntrada {
+        // comprobamos todas las transiciones
+        for (int i=0; i<f.length; i++) {
+            // si la entrada ingresada corresponde a entrada, retornamos el estado siguiente
+            if (f[i].getEntrada() == entrada) {
+                return f[i].getEstadoSiguiente();
+            }
+        }
+
+        // si llegamos hasta aca algo anda mal!
+        throw new NoExisteEntrada();
+    }
+
     public String getNombre() {
         return nombre;
     }

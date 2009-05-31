@@ -5,6 +5,9 @@
 
 package simautomatas;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Joaquin
@@ -38,7 +41,12 @@ public class Main {
 
         // probamos valuar una entrada
         String cadena = "0001";
-        System.out.println("La cadena '" + cadena + "' fue: " + afd.evaluarEntrada(cadena));
+        
+        try {
+            System.out.println("La cadena '" + cadena + "' fue: " + afd.evaluarEntrada(cadena));
+        } catch (NoExisteEntrada ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
