@@ -18,6 +18,9 @@ public class Transicion {
         this.estadoSiguiente = estadoSiguiente;
     }
 
+    public Transicion() {
+    }
+
     public char getEntrada() {
         return entrada;
     }
