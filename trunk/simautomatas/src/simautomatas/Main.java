@@ -37,7 +37,8 @@ public class Main {
         Automata afd = new Automata(alf, estados, I, new Estado[] {F});
 
         // probamos valuar una entrada
-        afd.evaluarEntrada("0001");
+        String cadena = "0001";
+        System.out.println("La cadena '" + cadena + "' fue: " + afd.evaluarEntrada(cadena));
     }
 
 }
