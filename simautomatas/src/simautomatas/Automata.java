@@ -5,30 +5,21 @@
 
 package simautomatas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Joaquin
  */
 public class Automata {
     // atributos generales de los Automatas
-    private char[] alfEntrada;
-    private Estado[] estados;
+    private String alfEntrada;
+    private ArrayList<Estado> estados;
     private Estado estadoInicial;
-    private Estado[] estadosFinales;
+    private ArrayList<Estado> estadosFinales;
 
-    public Automata(char[] alfEntrada, Estado[] estados, Estado estadoInicial, Estado[] estadosFinales) {
+    public Automata(String alfEntrada, ArrayList<Estado> estados, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
         this.alfEntrada = alfEntrada;
-        this.estados = estados;
-        this.estadoInicial = estadoInicial;
-        this.estadosFinales = estadosFinales;
-    }
-
-    public Automata(String alfEntrada, Estado[] estados, Estado estadoInicial, Estado[] estadosFinales) {
-        // obtenemos la cadena como array de caracteres
-        char cadena[] = {};
-        alfEntrada.getChars(0, alfEntrada.length(), cadena, 0);
-
-        this.alfEntrada = cadena;
         this.estados = estados;
         this.estadoInicial = estadoInicial;
         this.estadosFinales = estadosFinales;
@@ -40,16 +31,13 @@ public class Automata {
      * @return
      */
     public Boolean evaluarEntrada(String entrada) throws NoExisteEntrada {
-        // obtenemos la cadena como array de caracteres
-        char cadena[] = {};
-        entrada.getChars(0, entrada.length(), cadena, 0);
         
         // obviamente empezamos con el estado inicial
         Estado q = this.estadoInicial;
 
         // recorremos todos los caracteres de la entrada
-        for (int i=0; i<cadena.length; i++) {
-            q = q.valuar(cadena[i]);
+        for (int i=0; i<entrada.length(); i++) {
+            q = q.valuar(entrada.charAt(i));
         }
 
         // verificamos la pertenencia de q a los estados finales
@@ -63,8 +51,8 @@ public class Automata {
      */
     public Boolean esFinal(Estado estado) {
         // recorremos todos los Estados Finales
-        for (int i=0; i<this.estadosFinales.length; i++) {
-            if (estadosFinales[i].equals(estado))
+        for (int i=0; i<this.estadosFinales.size(); i++) {
+            if (estadosFinales.get(i).equals(estado))
                 return true;
         }
 

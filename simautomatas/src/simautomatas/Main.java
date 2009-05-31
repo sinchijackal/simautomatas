@@ -5,6 +5,7 @@
 
 package simautomatas;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +27,11 @@ public class Main {
         Estado I = new Estado("I");
         Estado A = new Estado("A");
         Estado F = new Estado("F");
-        Estado estados[] = {I, A, F};
+
+        ArrayList<Estado> estados = new ArrayList<Estado>();
+        estados.add(I);
+        estados.add(A);
+        estados.add(F);
 
         // definimos las transiciones
         I.setF(new Transicion('0', A));
@@ -36,8 +41,11 @@ public class Main {
         F.setF(new Transicion('0', F));
         F.setF(new Transicion('1', F));
 
+        ArrayList<Estado> estadosF = new ArrayList<Estado>();
+        estadosF.add(F);
+
         // creamos el automata
-        Automata afd = new Automata(alf, estados, I, new Estado[] {F});
+        Automata afd = new Automata(alf, estados, I, estadosF);
 
         // probamos valuar una entrada
         String cadena = "0001";

@@ -23,6 +23,7 @@ public class Estado {
 
     public Estado(String nombre) {
         this.nombre = nombre;
+        this.f = new ArrayList<Transicion>();
     }
 
     /**
