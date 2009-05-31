@@ -18,7 +18,6 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
         // definimos el alf de entrada
         String alf = "01";
@@ -48,7 +47,7 @@ public class Main {
         Automata afd = new Automata(alf, estados, I, estadosF);
 
         // probamos valuar una entrada
-        String cadena = "0001";
+        String cadena = "0100000001";
         
         try {
             System.out.println("La cadena '" + cadena + "' fue: " + afd.evaluarEntrada(cadena));
