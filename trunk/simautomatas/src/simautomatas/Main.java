@@ -25,30 +25,45 @@ public class Main {
         // definimos los estados
         Estado I = new Estado("I");
         Estado A = new Estado("A");
+        Estado B = new Estado("B");
         Estado F = new Estado("F");
 
         ArrayList<Estado> estados = new ArrayList<Estado>();
         estados.add(I);
         estados.add(A);
+        estados.add(B);
         estados.add(F);
 
         // definimos las transiciones
-        I.setF(new Transicion('0', A));
-        I.setF(new Transicion('1', I));
-        A.setF(new Transicion('0', A));
-        A.setF(new Transicion('1', F));
-        F.setF(new Transicion('0', F));
-        F.setF(new Transicion('1', F));
+        ArrayList<Estado> tI = new ArrayList<Estado>();
+        tI.add(A);
+        tI.add(F);
+        I.agregarTransicion(new Transicion('0', tI));
 
+        I.agregarTransicion(new Transicion('1', A));
+        A.agregarTransicion(new Transicion('0', B));
+        
+        ArrayList<Estado> tA = new ArrayList<Estado>();
+        tA.add(B);
+        tA.add(F);
+        A.agregarTransicion(new Transicion('1', tA));
+
+        B.agregarTransicion(new Transicion('&', F));
+        B.agregarTransicion(new Transicion('0', F));
+        B.agregarTransicion(new Transicion('1', F));
+
+        F.agregarTransicion(new Transicion('0', F));
+        F.agregarTransicion(new Transicion('1', F));
+
+        // Estados Finales
         ArrayList<Estado> estadosF = new ArrayList<Estado>();
         estadosF.add(F);
 
         // creamos el automata
-        Automata afd = new Automata(alf, estados, I, estadosF);
+        AFND afd = new AFND(alf, estados, I, estadosF);
 
         // probamos valuar una entrada
-        String cadena = "0100000001";
-        
+        String cadena = "001010";
         try {
             System.out.println("La cadena '" + cadena + "' fue: " + afd.evaluarEntrada(cadena));
         } catch (NoExisteEntrada ex) {

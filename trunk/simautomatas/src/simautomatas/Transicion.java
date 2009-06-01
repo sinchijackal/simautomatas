@@ -5,17 +5,25 @@
 
 package simautomatas;
 
+import java.util.ArrayList;
+
 /**
  * Funcion de transicion para un AF
  * @author Joaquin
  */
 public class Transicion {
     private char entrada;
-    private Estado estadoSiguiente;
+    private ArrayList<Estado> estadoSiguiente;
 
-    public Transicion(char entrada, Estado estadoSiguiente) {
+    public Transicion(char entrada, ArrayList<Estado> estadoSiguiente) {
         this.entrada = entrada;
         this.estadoSiguiente = estadoSiguiente;
+    }
+
+    public Transicion(char entrada, Estado estado) {
+        this.estadoSiguiente = new ArrayList<Estado>();
+        this.entrada = entrada;
+        this.estadoSiguiente.add(estado);
     }
 
     public Transicion() {
@@ -29,11 +37,12 @@ public class Transicion {
         this.entrada = entrada;
     }
 
-    public Estado getEstadoSiguiente() {
+    public ArrayList<Estado> getEstadoSiguiente() {
         return estadoSiguiente;
     }
 
-    public void setEstadoSiguiente(Estado estadoSiguiente) {
+    public void setEstadoSiguiente(ArrayList<Estado> estadoSiguiente) {
         this.estadoSiguiente = estadoSiguiente;
     }
+
 }
