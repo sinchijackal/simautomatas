@@ -30,21 +30,21 @@ public class Estado {
      * Agregamos una transicion
      * @param f Transicion
      */
-    public void setF(Transicion f) {
+    public void agregarTransicion(Transicion f) {
         this.f.add(f);
     }
 
-    public Estado valuar(char entrada) throws NoExisteEntrada {
+    public ArrayList<Estado> valuar(char entrada) {
         // comprobamos todas las transiciones
         for (int i=0; i<f.size(); i++) {
-            // si la entrada ingresada corresponde a entrada, retornamos el estado siguiente
+            // si la entrada ingresada corresponde a entrada,
+            // retornamos el estado siguiente
             if (f.get(i).getEntrada() == entrada) {
                 return f.get(i).getEstadoSiguiente();
             }
         }
 
-        // si llegamos hasta aca algo anda mal!
-        throw new NoExisteEntrada();
+        return new ArrayList<Estado>();
     }
 
     public String getNombre() {

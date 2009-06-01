@@ -12,7 +12,7 @@ package simautomatas;
 public class NoExisteEntrada extends Exception {
 
     public NoExisteEntrada() {
-        super ("f(a) no existe para la entrada a...");
+        super ("Error en el conjunto de transiciones para el caracter de entrada");
     }
 
 }

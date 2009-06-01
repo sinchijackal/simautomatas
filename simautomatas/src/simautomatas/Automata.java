@@ -11,14 +11,15 @@ import java.util.ArrayList;
  *
  * @author Joaquin
  */
-public class Automata {
+public abstract class Automata {
     // atributos generales de los Automatas
     private String alfEntrada;
     private ArrayList<Estado> estados;
     private Estado estadoInicial;
     private ArrayList<Estado> estadosFinales;
 
-    public Automata(String alfEntrada, ArrayList<Estado> estados, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
+    public Automata(String alfEntrada, ArrayList<Estado> estados,
+                    Estado estadoInicial, ArrayList<Estado> estadosFinales) {
         this.alfEntrada = alfEntrada;
         this.estados = estados;
         this.estadoInicial = estadoInicial;
@@ -30,19 +31,7 @@ public class Automata {
      * @param entrada
      * @return
      */
-    public Boolean evaluarEntrada(String entrada) throws NoExisteEntrada {
-        
-        // obviamente empezamos con el estado inicial
-        Estado q = this.estadoInicial;
-
-        // recorremos todos los caracteres de la entrada
-        for (int i=0; i<entrada.length(); i++) {
-            q = q.valuar(entrada.charAt(i));
-        }
-
-        // verificamos la pertenencia de q a los estados finales
-        return esFinal(q);
-    }
+    public abstract Boolean evaluarEntrada(String entrada) throws NoExisteEntrada;
 
     /**
      * Retornamos si el Estado estado pertenece a los Estados finales
@@ -58,6 +47,38 @@ public class Automata {
 
         // si no era igual, es distinto!!!
         return false;
+    }
+
+    public String getAlfEntrada() {
+        return alfEntrada;
+    }
+
+    public void setAlfEntrada(String alfEntrada) {
+        this.alfEntrada = alfEntrada;
+    }
+
+    public Estado getEstadoInicial() {
+        return estadoInicial;
+    }
+
+    public void setEstadoInicial(Estado estadoInicial) {
+        this.estadoInicial = estadoInicial;
+    }
+
+    public ArrayList<Estado> getEstados() {
+        return estados;
+    }
+
+    public void setEstados(ArrayList<Estado> estados) {
+        this.estados = estados;
+    }
+
+    public ArrayList<Estado> getEstadosFinales() {
+        return estadosFinales;
+    }
+
+    public void setEstadosFinales(ArrayList<Estado> estadosFinales) {
+        this.estadosFinales = estadosFinales;
     }
 
 }
