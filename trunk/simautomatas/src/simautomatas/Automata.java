@@ -19,7 +19,7 @@ public abstract class Automata {
     private ArrayList<Estado> estadosFinales;
 
     public Automata(String alfEntrada, ArrayList<Estado> estados,
-                    Estado estadoInicial, ArrayList<Estado> estadosFinales) {
+                    Estado estadoInicial, ArrayList<Estado> estadosFinales) { 
         this.alfEntrada = alfEntrada;
         this.estados = estados;
         this.estadoInicial = estadoInicial;
@@ -39,14 +39,7 @@ public abstract class Automata {
      * @return
      */
     public Boolean esFinal(Estado estado) {
-        // recorremos todos los Estados Finales
-        for (int i=0; i<this.estadosFinales.size(); i++) {
-            if (estadosFinales.get(i).equals(estado))
-                return true;
-        }
-
-        // si no era igual, es distinto!!!
-        return false;
+        return estadosFinales.contains(estado);
     }
 
     public String getAlfEntrada() {

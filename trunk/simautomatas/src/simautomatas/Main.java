@@ -63,7 +63,7 @@ public class Main {
         AFND afd = new AFND(alf, estados, I, estadosF);
 
         // probamos valuar una entrada
-        String cadena = "001010";
+        String cadena = "1";
         try {
             System.out.println("La cadena '" + cadena + "' fue: " + afd.evaluarEntrada(cadena));
         } catch (NoExisteEntrada ex) {
