@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Transicion {
     private char entrada;
+    private char entradaMemoria; // Ya sea Pila, Cinta acotada, Cinta No acotada
     private ArrayList<Estado> estadoSiguiente;
 
     public Transicion(char entrada, ArrayList<Estado> estadoSiguiente) {
@@ -26,7 +27,17 @@ public class Transicion {
         this.estadoSiguiente.add(estado);
     }
 
-    public Transicion() {
+    public Transicion(char entrada, char entradaMemoria, ArrayList<Estado> estadoSiguiente) {
+        this.entrada = entrada;
+        this.entradaMemoria = entradaMemoria;
+        this.estadoSiguiente = estadoSiguiente;
+    }
+
+    public Transicion(char entrada, char entradaMemoria, Estado estado) {
+        this.estadoSiguiente = new ArrayList<Estado>();
+        this.entradaMemoria = entradaMemoria;
+        this.entrada = entrada;
+        this.estadoSiguiente.add(estado);
     }
 
     public char getEntrada() {
@@ -45,4 +56,11 @@ public class Transicion {
         this.estadoSiguiente = estadoSiguiente;
     }
 
+    public char getEntradaMemoria() {
+        return entradaMemoria;
+    }
+
+    public void setEntradaMemoria(char entradaMemoria) {
+        this.entradaMemoria = entradaMemoria;
+    }
 }

@@ -44,6 +44,21 @@ public class Estado {
             }
         }
 
+        // Si no hay transiciones para esa entrada, retornamos vacio
+        return new ArrayList<Estado>();
+    }
+
+    public ArrayList<Estado> valuar(char entrada, char entradaMemoria) {
+        // comprobamos todas las transiciones
+        for (int i=0; i<f.size(); i++) {
+            // si la entrada ingresada corresponde a entrada,
+            // retornamos el estado siguiente
+            if (f.get(i).getEntrada() == entrada && f.get(i).getEntradaMemoria() == entradaMemoria) {
+                return f.get(i).getEstadoSiguiente();
+            }
+        }
+
+        // Si no hay transiciones para esa entrada, retornamos vacio
         return new ArrayList<Estado>();
     }
 
