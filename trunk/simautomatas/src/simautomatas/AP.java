@@ -6,6 +6,7 @@
 package simautomatas;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * Automata a Pila
@@ -14,12 +15,12 @@ import java.util.ArrayList;
 public class AP extends Automata {
 
     // La Pila
-    private char[] pila;
+    private Stack<Caracter> pila;
 
     public AP(String alfEntrada, ArrayList<Estado> estados, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
         super(alfEntrada, estados, estadoInicial, estadosFinales);
         // apilamos el TOPE de la pila (#)
-        this.apilar('#');
+        this.apilar(new Caracter('#'));
     }
 
     @Override
@@ -31,16 +32,26 @@ public class AP extends Automata {
      * Apilamos un caracter en la pila y devolvemos su indice
      * @param caracter
      */
-    private int apilar(char caracter) {
-        return 0;
+    private int apilar(Caracter caracter) {
+        this.pila.push(caracter);
+        return this.pila.size()-1;
     }
 
     /**
-     * Desapilamos un caracte
+     * Desapilamos un caracter
      * @return el caracter desapilado
      */
-    private char desapilar() throws ExcepcionPilaVacia {
-        return '&';
+    private Caracter desapilar() throws ExcepcionPilaVacia {
+        return this.pila.pop();
+    }
+
+    /**
+     * Leemos el ultimo caracter de la pila sin desapilarlo
+     * @return
+     * @throws simautomatas.ExcepcionPilaVacia
+     */
+    private Caracter leer() throws ExcepcionPilaVacia {
+        return this.pila.peek();
     }
 
 }
