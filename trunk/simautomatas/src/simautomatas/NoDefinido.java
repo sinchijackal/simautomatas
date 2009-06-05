@@ -9,9 +9,9 @@ package simautomatas;
  *
  * @author Joaquin
  */
-public class NoExisteEntrada extends Exception {
+public class NoDefinido extends Exception {
 
-    public NoExisteEntrada() {
+    public NoDefinido() {
         super ("Error en el conjunto de transiciones para el caracter de entrada");
     }
 
