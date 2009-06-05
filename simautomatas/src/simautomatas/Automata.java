@@ -31,7 +31,7 @@ public abstract class Automata {
      * @param entrada
      * @return
      */
-    public abstract Boolean evaluarEntrada(String entrada) throws NoExisteEntrada;
+    public abstract Boolean evaluarEntrada(String entrada) throws NoDefinido;
 
     /**
      * Retornamos si el Estado estado pertenece a los Estados finales

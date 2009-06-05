@@ -26,31 +26,29 @@ public class Main {
         Estado I = new Estado("I");
         Estado A = new Estado("A");
         Estado B = new Estado("B");
+        Estado C = new Estado("C");
         Estado F = new Estado("F");
 
         ArrayList<Estado> estados = new ArrayList<Estado>();
         estados.add(I);
         estados.add(A);
         estados.add(B);
+        estados.add(C);
         estados.add(F);
 
-        // definimos las transiciones
-        ArrayList<Estado> tI = new ArrayList<Estado>();
-        tI.add(A);
-        tI.add(F);
-        I.agregarTransicion(new Transicion('0', tI));
-
+        // Transiciones
+        I.agregarTransicion(new Transicion('0', A));
         I.agregarTransicion(new Transicion('1', A));
-        A.agregarTransicion(new Transicion('0', B));
         
         ArrayList<Estado> tA = new ArrayList<Estado>();
         tA.add(B);
         tA.add(F);
+        tA.add(C);
+        A.agregarTransicion(new Transicion('0', A));
         A.agregarTransicion(new Transicion('1', tA));
 
-        B.agregarTransicion(new Transicion('&', F));
         B.agregarTransicion(new Transicion('0', F));
-        B.agregarTransicion(new Transicion('1', F));
+        B.agregarTransicion(new Transicion('&', F));
 
         F.agregarTransicion(new Transicion('0', F));
         F.agregarTransicion(new Transicion('1', F));
@@ -60,13 +58,24 @@ public class Main {
         estadosF.add(F);
 
         // creamos el automata
-        AFND afd = new AFND(alf, estados, I, estadosF);
+        AFND afnd = new AFND(alf, estados, I, estadosF);
 
         // probamos valuar una entrada
-        String cadena = "1";
+        String cadena = "101";
+
+        System.out.println("Cadena: " + cadena);
+        System.out.println("Transiciones: ");
+
         try {
-            System.out.println("La cadena '" + cadena + "' fue: " + afd.evaluarEntrada(cadena));
-        } catch (NoExisteEntrada ex) {
+            ArrayList<ConfigInstantanea> cfgs = afnd.ejecutar(cadena);
+            System.out.println("Para el ultimo caracter tenemos: " + cfgs.size() + " configs...");
+
+            for (int i=0; i<cfgs.size(); i++) {
+                System.out.println(cfgs.get(i).toString());
+            }
+
+            //System.out.println("la aceptacion es: " + afnd.evaluarEntrada(cadena));
+        } catch (NoDefinido ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
