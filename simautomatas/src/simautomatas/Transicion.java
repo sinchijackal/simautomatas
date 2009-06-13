@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class Transicion {
     private char entrada;
     private char entradaMemoria; // Ya sea Pila, Cinta acotada, Cinta No acotada
+    private char salidaMemoria;
+    private int operacion;
     private ArrayList<Estado> estadoSiguiente;
 
     public Transicion(char entrada, ArrayList<Estado> estadoSiguiente) {
@@ -27,15 +29,27 @@ public class Transicion {
         this.estadoSiguiente.add(estado);
     }
 
-    public Transicion(char entrada, char entradaMemoria, ArrayList<Estado> estadoSiguiente) {
+    public Transicion(char entrada, char entradaMemoria, int operacion, char salidaMemoria, ArrayList<Estado> estadoSiguiente) {
         this.entrada = entrada;
         this.entradaMemoria = entradaMemoria;
+        this.salidaMemoria = salidaMemoria;
+        this.operacion = operacion;
         this.estadoSiguiente = estadoSiguiente;
     }
 
-    public Transicion(char entrada, char entradaMemoria, Estado estado) {
+    public Transicion(char entrada, char entradaMemoria, int operacion, char salidaMemoria, Estado estado) {
         this.estadoSiguiente = new ArrayList<Estado>();
         this.entradaMemoria = entradaMemoria;
+        this.operacion = operacion;
+        this.salidaMemoria = salidaMemoria;
+        this.entrada = entrada;
+        this.estadoSiguiente.add(estado);
+    }
+
+    public Transicion(char entrada, char entradaMemoria, int operacion, Estado estado) {
+        this.estadoSiguiente = new ArrayList<Estado>();
+        this.entradaMemoria = entradaMemoria;
+        this.operacion = operacion;
         this.entrada = entrada;
         this.estadoSiguiente.add(estado);
     }
@@ -63,4 +77,21 @@ public class Transicion {
     public void setEntradaMemoria(char entradaMemoria) {
         this.entradaMemoria = entradaMemoria;
     }
+
+    public char getSalidaMemoria() {
+        return salidaMemoria;
+    }
+
+    public void setSalidaMemoria(char salidaMemoria) {
+        this.salidaMemoria = salidaMemoria;
+    }
+
+    public int getOperacion() {
+        return operacion;
+    }
+
+    public void setOperacion(int operacion) {
+        this.operacion = operacion;
+    }
+
 }

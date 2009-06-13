@@ -5,6 +5,7 @@
 
 package simautomatas;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -17,10 +18,21 @@ public class Pila {
     private Stack<Caracter> pila;
 
     public Pila() {
+        this.pila = new Stack<Caracter>();
+    }
+
+    public Pila(Caracter inicial) {
+        this.pila = new Stack<Caracter>();
+        apilar(inicial);
+    }
+
+    public Pila(char c) {
+        this.pila = new Stack<Caracter>();
+        apilar(new Caracter(c));
     }
     
     /**
-     * Apilamos un caracter en la pila y devolvemos su indice
+     * Apilamos un Caracter en la pila y devolvemos su indice
      * @param caracter
      */
     public int apilar(Caracter caracter) {
@@ -29,11 +41,20 @@ public class Pila {
     }
 
     /**
+     * Apilamos un caracter en la pila y devolvemos su indice
+     * @param caracter
+     */
+    public int apilar(char caracter) {
+        this.pila.push(new Caracter(caracter));
+        return this.pila.size()-1;
+    }
+
+    /**
      * Desapilamos un caracter
      * @return el caracter desapilado
      */
-    public Caracter desapilar() throws ExcepcionPilaVacia {
-        return this.pila.pop();
+    public char desapilar() throws ExcepcionPilaVacia {
+        return this.pila.pop().getCaracter();
     }
 
     /**
@@ -41,8 +62,21 @@ public class Pila {
      * @return
      * @throws simautomatas.ExcepcionPilaVacia
      */
-    public Caracter leer() throws ExcepcionPilaVacia {
-        return this.pila.peek();
+    public char leer() throws ExcepcionPilaVacia {
+        return this.pila.peek().getCaracter();
+    }
+
+    @Override
+    public String toString() {
+        String retorno = "";
+        ArrayList<Caracter> pilaProvisoria = new ArrayList<Caracter>();
+
+        // desapilamos y guardarmos en la pila provisoria
+        for (int i=0; i<this.pila.size(); i++) {
+            retorno += this.pila.get(i).getCaracter() + " ";
+        }
+
+        return retorno + "(FIN)";
     }
 
 }

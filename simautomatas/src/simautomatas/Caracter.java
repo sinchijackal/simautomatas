@@ -9,7 +9,7 @@ package simautomatas;
  *
  * @author Joaquin
  */
-class Caracter {
+public class Caracter {
 
     private char caracter;
 
