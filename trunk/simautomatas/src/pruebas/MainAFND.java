@@ -3,8 +3,9 @@
  * and open the template in the editor.
  */
 
-package simautomatas;
+package pruebas;
 
+import simautomatas.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author Joaquin
  */
-public class Main {
+public class MainAFND {
 
     /**
      * @param args the command line arguments
@@ -76,7 +77,7 @@ public class Main {
 
             //System.out.println("la aceptacion es: " + afnd.evaluarEntrada(cadena));
         } catch (NoDefinido ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainAFND.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -113,17 +113,4 @@ public class AFND extends Automata {
         return algunoEsFinal(estados);
     }
 
-    public Boolean algunoEsFinal(ArrayList<Estado> estados) {
-        // recorremos todos los elementos del conjunto
-        for (int i=0; i<estados.size(); i++) {
-
-            // si encontramos alguno final, salimos con true
-            if (esFinal(estados.get(i)))
-                return true;
-        }
-
-        // si llegamos aca, ninguno es FINAL!!!
-        return false;
-    }
-
 }
