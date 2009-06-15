@@ -11,10 +11,13 @@ package simautomatas;
  */
 public final class Operacion {
 
+    // Para el AP
     public static final int LEER = 0;
     public static final int GRABAR = 1;
     public static final int BORRAR = 2;
-    public static final int DERECHA = 3;
-    public static final int IZQUIERDA = 4;
+    // Para la MT
+    public static final int DERECHA = 1;
+    public static final int IZQUIERDA = -1;
+    public static final int PARAR = 0;
 
 }

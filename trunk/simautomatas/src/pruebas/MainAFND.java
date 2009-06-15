@@ -59,7 +59,7 @@ public class MainAFND {
         estadosF.add(F);
 
         // creamos el automata
-        AFND afnd = new AFND(alf, estados, I, estadosF);
+        AFND afnd = new AFND("Proyecto 1 - AFND", alf, estados, I, estadosF);
 
         // probamos valuar una entrada
         String cadena = "101";
