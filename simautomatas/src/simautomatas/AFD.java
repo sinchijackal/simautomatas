@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class AFD extends Automata {
 
-    public AFD(String alfEntrada, ArrayList<Estado> estados, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
-        super(alfEntrada, estados, estadoInicial, estadosFinales);
+    public AFD(String nombre, String alfEntrada, ArrayList<Estado> estados, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
+        super(nombre, alfEntrada, estados, estadoInicial, estadosFinales);
     }
 
     /**

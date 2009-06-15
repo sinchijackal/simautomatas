@@ -78,7 +78,7 @@ public class MainAP1 {
         E.agregarTransicion(new Transicion('1', '#', Operacion.LEER, E));
 
         // creamos el AP
-        AP ap = new AP(alfEntrada, alfPila, estados, '#', I, estadosFinales);
+        AP ap = new AP("Proyecto 2 - AP", alfEntrada, alfPila, estados, '#', I, estadosFinales);
 
         // probamos la ejecucion
         ArrayList<ConfigInstantanea> cfg;

@@ -45,10 +45,10 @@ public class Cinta {
         
         if (cinta.get(i).getCaracter() == 'b') {
             if (i == 0) {
-                cinta.add(1, new Caracter(c));
+                if (c != 'b') cinta.add(1, new Caracter(c));
             }
             else {
-                cinta.add(i , new Caracter(c));
+                if (c != 'b') cinta.add(i , new Caracter(c));
             }
         }
         else {

@@ -17,8 +17,8 @@ public class AP extends Automata {
     private String alfPila;
     private char inicialPila;
 
-    public AP(String alfEntrada, String alfPila, ArrayList<Estado> estados, char inicialPila, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
-        super(alfEntrada, estados, estadoInicial, estadosFinales);
+    public AP(String nombre, String alfEntrada, String alfPila, ArrayList<Estado> estados, char inicialPila, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
+        super(nombre, alfEntrada, estados, estadoInicial, estadosFinales);
         // apilamos el TOPE de la pila (#)
         this.alfPila = alfPila;
         this.pila = new Pila(new Caracter(inicialPila));

@@ -65,7 +65,7 @@ public class MainAP {
         q4.agregarTransicion(new Transicion('&', '#', Operacion.BORRAR, F));
 
         // creamos el AP
-        AP ap = new AP(alfEntrada, alfPila, estados, '#', I, estadosFinales);
+        AP ap = new AP("Proyecto 1 - AP", alfEntrada, alfPila, estados, '#', I, estadosFinales);
 
         // probamos la ejecucion
         ArrayList<ConfigInstantanea> cfg;

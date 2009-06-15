@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class AFND extends Automata {
 
-    public AFND(String alfEntrada, ArrayList<Estado> estados, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
-        super(alfEntrada, estados, estadoInicial, estadosFinales);
+    public AFND(String nombre, String alfEntrada, ArrayList<Estado> estados, Estado estadoInicial, ArrayList<Estado> estadosFinales) {
+        super(nombre, alfEntrada, estados, estadoInicial, estadosFinales);
     }
 
     /**
